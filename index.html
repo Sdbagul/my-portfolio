@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sandip Bagul | Full Stack Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* Dark Gray-Blue */
+            color: #E5E7EB; /* Light Gray */
+        }
+        .section-title {
+            @apply text-3xl font-bold text-center mb-12 text-white relative pb-4;
+        }
+        .section-title::after {
+            content: '';
+            @apply absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-indigo-500 rounded;
+        }
+        .skill-tag {
+            @apply bg-gray-700 text-indigo-300 text-sm font-medium px-4 py-2 rounded-full hover:bg-indigo-500 hover:text-white transition-all duration-300 cursor-pointer;
+        }
+        .timeline-item::before {
+            content: '';
+            @apply absolute left-0 top-2 w-4 h-4 rounded-full bg-indigo-500 border-4 border-gray-700;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white">Sandip B.</a>
+            <div class="hidden md:flex space-x-6 text-lg">
+                <a href="#about" class="hover:text-indigo-400 transition-colors duration-300">About</a>
+                <a href="#skills" class="hover:text-indigo-400 transition-colors duration-300">Skills</a>
+                <a href="#experience" class="hover:text-indigo-400 transition-colors duration-300">Experience</a>
+                <a href="#projects" class="hover:text-indigo-400 transition-colors duration-300">Projects</a>
+                <a href="#contact" class="hover:text-indigo-400 transition-colors duration-300">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-white">
+                <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                <svg id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x hidden"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900">
+            <a href="#about" class="block py-2 px-6 text-center hover:bg-gray-800">About</a>
+            <a href="#skills" class="block py-2 px-6 text-center hover:bg-gray-800">Skills</a>
+            <a href="#experience" class="block py-2 px-6 text-center hover:bg-gray-800">Experience</a>
+            <a href="#projects" class="block py-2 px-6 text-center hover:bg-gray-800">Projects</a>
+            <a href="#contact" class="block py-2 px-6 text-center hover:bg-gray-800">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- Hero Section -->
+        <section id="hero" class="text-center py-20">
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-4">
+                Sandip Bagul
+            </h1>
+            <p class="text-2xl md:text-3xl text-indigo-400 font-semibold mb-6">
+                Full Stack Developer
+            </p>
+            <p class="max-w-3xl mx-auto text-lg text-gray-300 mb-8">
+                Specializing in building robust, scalable web applications with Spring Boot and React. Let's create something amazing together.
+            </p>
+            <div class="flex justify-center items-center space-x-4">
+                <a href="https://www.linkedin.com/in/sandipbagul/" target="_blank" class="text-white hover:text-indigo-400 transition-colors duration-300">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                </a>
+                <a href="mailto:sandipbagul2312@gmail.com" class="text-white hover:text-indigo-400 transition-colors duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                </a>
+                 <a href="tel:9392153017" class="text-white hover:text-indigo-400 transition-colors duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="py-20">
+            <h2 class="section-title">About Me</h2>
+            <div class="max-w-4xl mx-auto text-center text-lg leading-relaxed">
+                <p>
+                    I'm a highly skilled Full Stack Developer with over 2 years of experience specializing in developing robust, scalable web applications using Spring Boot and React.js. I have a proven ability to design, implement, and maintain both backend services and frontend interfaces, ensuring seamless integration and high performance. I possess a strong background in developing RESTful APIs, managing databases, and delivering interactive, user-friendly UI components.
+                </p>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20">
+            <h2 class="section-title">Skills</h2>
+            <div class="max-w-5xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <!-- Backend Skills -->
+                    <div class="bg-gray-800/50 p-6 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-semibold mb-6 text-white text-center">Backend & Core</h3>
+                        <div class="flex flex-wrap gap-3 justify-center">
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">Spring Boot</span>
+                            <span class="skill-tag">Spring MVC</span>
+                            <span class="skill-tag">Microservices</span>
+                            <span class="skill-tag">RESTful APIs</span>
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">Apache Kafka</span>
+                            <span class="skill-tag">Elastic Search</span>
+                            <span class="skill-tag">Docker</span>
+                        </div>
+                    </div>
+                    <!-- Frontend & Tools -->
+                    <div class="bg-gray-800/50 p-6 rounded-lg shadow-lg">
+                        <h3 class="text-2xl font-semibold mb-6 text-white text-center">Frontend & Tools</h3>
+                        <div class="flex flex-wrap gap-3 justify-center">
+                            <span class="skill-tag">React.js</span>
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">CSS</span>
+                            <span class="skill-tag">API Integration</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">Eclipse</span>
+                            <span class="skill-tag">STS</span>
+                            <span class="skill-tag">VS Code</span>
+                            <span class="skill-tag">Postman</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-20">
+            <h2 class="section-title">Work Experience</h2>
+            <div class="max-w-4xl mx-auto relative pl-8 border-l-2 border-gray-700">
+                <!-- C-DAC Project Engineer -->
+                <div class="timeline-item mb-12">
+                    <h3 class="text-xl font-bold text-indigo-400">Project Engineer</h3>
+                    <p class="text-lg font-semibold text-white">Centre for Development of Advanced Computing (C-DAC)</p>
+                    <p class="text-sm text-gray-400 mb-4">Feb 2025 - Present | Hyderabad</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-300">
+                        <li>Leading the development of scalable microservices using Spring Boot.</li>
+                        <li>Designing and optimizing RESTful APIs for multiple communication channels.</li>
+                        <li>Integrating Apache Kafka for real-time data streaming and asynchronous processing.</li>
+                        <li>Mentoring junior developers and contributing to code reviews and architecture.</li>
+                        <li>Collaborating with DevOps to containerize services using Docker for CI/CD pipelines.</li>
+                    </ul>
+                </div>
+                <!-- C-DAC Project Associate -->
+                <div class="timeline-item mb-12">
+                    <h3 class="text-xl font-bold text-indigo-400">Project Associate</h3>
+                    <p class="text-lg font-semibold text-white">Centre for Development of Advanced Computing (C-DAC)</p>
+                    <p class="text-sm text-gray-400 mb-4">Sep 2022 - Feb 2025 | Hyderabad</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-300">
+                        <li>Developed and maintained microservices-based applications using Spring Boot.</li>
+                        <li>Implemented features and enhancements using Java, J2SE, and J2EE.</li>
+                        <li>Collaborated with teams to design and integrate APIs for voice, SMS, and notifications.</li>
+                        <li>Worked on Apache Kafka for event-driven data processing and messaging.</li>
+                    </ul>
+                </div>
+                <!-- Nectawise Intern -->
+                <div class="timeline-item">
+                    <h3 class="text-xl font-bold text-indigo-400">Web Developer Intern</h3>
+                    <p class="text-lg font-semibold text-white">Nectawise Market Research</p>
+                    <p class="text-sm text-gray-400 mb-4">Nov 2021 - Feb 2022 | Pune</p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-300">
+                        <li>Contributed to the development of an employee management portal using Spring MVC.</li>
+                        <li>Designed and implemented back-end functionalities.</li>
+                        <li>Collaborated with front-end developers for seamless integration.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20">
+            <h2 class="section-title">Projects</h2>
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                <!-- Project Card 1 -->
+                <div class="bg-gray-800/50 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 flex flex-col">
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold text-indigo-400 mb-2">Notify</h3>
+                        <p class="text-gray-300 mb-4">A communication channel integration platform supporting voice, SMS, WhatsApp, and app notifications.</p>
+                        <p class="text-gray-400 mb-4"><span class="font-semibold">Role:</span> Lead Developer</p>
+                    </div>
+                    <div class="p-6 bg-gray-900/50">
+                        <div class="flex flex-wrap gap-2">
+                           <span class="skill-tag !text-xs !px-3 !py-1">Spring Boot</span>
+                           <span class="skill-tag !text-xs !px-3 !py-1">Microservices</span>
+                           <span class="skill-tag !text-xs !px-3 !py-1">Java</span>
+                           <span class="skill-tag !text-xs !px-3 !py-1">Apache Kafka</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="bg-gray-800/50 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 flex flex-col">
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold text-indigo-400 mb-2">Vikaspedia Backend</h3>
+                        <p class="text-gray-300 mb-4">Architected and developed a comprehensive microservices ecosystem for a large-scale enterprise application.</p>
+                         <p class="text-gray-400 mb-4"><span class="font-semibold">Role:</span> Back-End Developer</p>
+                    </div>
+                    <div class="p-6 bg-gray-900/50">
+                        <div class="flex flex-wrap gap-2">
+                           <span class="skill-tag !text-xs !px-3 !py-1">Spring Boot</span>
+                           <span class="skill-tag !text-xs !px-3 !py-1">MySQL</span>
+                           <span class="skill-tag !text-xs !px-3 !py-1">MongoDB</span>
+                           <span class="skill-tag !text-xs !px-3 !py-1">Elastic Search</span>
+                           <span class="skill-tag !text-xs !px-3 !py-1">Redis</span>
+                           <span class="skill-tag !text-xs !px-3 !py-1">Kafka</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="bg-gray-800/50 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 flex flex-col">
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold text-indigo-400 mb-2">Hostel Automation System</h3>
+                        <p class="text-gray-300 mb-4">Automated hostel management tasks, including student attendance tracking and parent notifications using face recognition.</p>
+                        <p class="text-gray-400 mb-4"><span class="font-semibold">Role:</span> Back-End Developer</p>
+                    </div>
+                     <div class="p-6 bg-gray-900/50">
+                        <div class="flex flex-wrap gap-2">
+                           <span class="skill-tag !text-xs !px-3 !py-1">Spring Boot</span>
+                           <span class="skill-tag !text-xs !px-3 !py-1">Face Recognition</span>
+                           <span class="skill-tag !text-xs !px-3 !py-1">Java</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project Card 4 -->
+                 <div class="bg-gray-800/50 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 flex flex-col">
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold text-indigo-400 mb-2">Employee Management Portal</h3>
+                        <p class="text-gray-300 mb-4">Contributed to the development of an employee management portal with a focus on back-end functionality.</p>
+                        <p class="text-gray-400 mb-4"><span class="font-semibold">Role:</span> Back-End Developer</p>
+                    </div>
+                     <div class="p-6 bg-gray-900/50">
+                        <div class="flex flex-wrap gap-2">
+                           <span class="skill-tag !text-xs !px-3 !py-1">Spring MVC</span>
+                           <span class="skill-tag !text-xs !px-3 !py-1">Java</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+         <!-- Education Section -->
+        <section id="education" class="py-20">
+            <h2 class="section-title">Education</h2>
+            <div class="max-w-4xl mx-auto text-center">
+                 <div class="mb-6">
+                    <h3 class="text-xl font-bold text-indigo-400">BEIT - Bachelor of Engineering in Information Technology</h3>
+                    <p class="text-lg text-white">Savitribai Phule Pune University</p>
+                    <p class="text-gray-400">Graduated 2022</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-indigo-400">Diploma in Computer Engineering</h3>
+                    <p class="text-lg text-white">Maharashtra State Board of Technical Education</p>
+                    <p class="text-gray-400">Graduated 2019</p>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-900">
+        <div class="container mx-auto px-6 py-12 text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">Get In Touch</h2>
+            <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
+                I'm currently open to new opportunities. Feel free to reach out if you have a project in mind or just want to connect!
+            </p>
+            <a href="mailto:sandipbagul2312@gmail.com" class="inline-block bg-indigo-500 text-white font-bold text-lg px-8 py-4 rounded-lg hover:bg-indigo-600 transition-colors duration-300">
+                Say Hello
+            </a>
+            <div class="mt-10 flex justify-center items-center space-x-6">
+                <a href="https://www.linkedin.com/in/sandipbagul/" target="_blank" class="text-gray-400 hover:text-indigo-400 transition-colors duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                </a>
+                <a href="mailto:sandipbagul2312@gmail.com" class="text-gray-400 hover:text-indigo-400 transition-colors duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                </a>
+                 <a href="tel:9392153017" class="text-gray-400 hover:text-indigo-400 transition-colors duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </a>
+            </div>
+            <p class="text-gray-500 mt-10">© 2024 Sandip Bagul. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const openIcon = document.getElementById('menu-open-icon');
+        const closeIcon = document.getElementById('menu-close-icon');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            openIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when a link is clicked
+        const mobileMenuLinks = mobileMenu.getElementsByTagName('a');
+        for (let link of mobileMenuLinks) {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                openIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            });
+        }
+    </script>
+</body>
+</html>
