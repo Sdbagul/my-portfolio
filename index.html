@@ -11,177 +11,253 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #0f172a;
+            --text: #334155;
+            --text-light: #64748b;
+            --bg: #ffffff;
+            --bg-alt: #f8fafc;
+            --border: #e2e8f0;
+            --accent: #3b82f6;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            color: #2c3e50;
-            background: #f5f7fa;
+            color: var(--text);
+            background: var(--bg);
+            overflow-x: hidden;
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;
         }
 
+        /* Navigation */
         nav {
-            background: #ffffff;
-            padding: 20px 0;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 16px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
             z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 12px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
         }
 
         nav .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 40px;
         }
 
         nav .logo {
-            font-size: 1.5em;
+            font-size: 1.5rem;
             font-weight: 700;
-            color: #2c3e50;
+            color: var(--primary);
+            letter-spacing: -0.5px;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 32px;
         }
 
         nav a {
-            color: #2c3e50;
+            color: var(--text);
             text-decoration: none;
             font-weight: 500;
+            font-size: 0.95rem;
             transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
         }
 
         nav a:hover {
-            color: #3498db;
+            color: var(--primary);
         }
 
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text);
+        }
+
+        /* Hero Section */
         header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
             color: white;
-            padding: 100px 40px;
-            text-align: left;
+            padding: 120px 20px 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        header .header-content {
-            flex: 1;
+            position: relative;
+            z-index: 1;
         }
 
         header h1 {
-            font-size: 3em;
-            margin-bottom: 15px;
-            font-weight: 700;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 16px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #fff 0%, #e2e8f0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         header .title {
-            font-size: 1.4em;
+            font-size: clamp(1.25rem, 3vw, 1.5rem);
             margin-bottom: 20px;
-            opacity: 0.95;
-            font-weight: 300;
+            color: #94a3b8;
+            font-weight: 400;
         }
 
         header .subtitle {
-            font-size: 1.1em;
-            margin-bottom: 30px;
-            opacity: 0.9;
-            max-width: 600px;
-            line-height: 1.8;
+            font-size: clamp(1rem, 2vw, 1.125rem);
+            margin-bottom: 32px;
+            color: #cbd5e1;
+            max-width: 650px;
+            line-height: 1.7;
         }
 
         .btn-primary {
             display: inline-block;
-            background: white;
-            color: #1e3c72;
-            padding: 12px 30px;
-            border-radius: 5px;
+            background: var(--primary);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
         }
 
         .btn-primary:hover {
+            background: var(--primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
         }
 
         .contact-links {
             display: flex;
-            gap: 15px;
-            margin-top: 20px;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 24px;
+            font-size: 0.95rem;
         }
 
         .contact-links a {
-            color: white;
+            color: #94a3b8;
             text-decoration: none;
-            opacity: 0.9;
-            transition: opacity 0.3s;
+            transition: color 0.3s;
         }
 
         .contact-links a:hover {
-            opacity: 1;
+            color: white;
         }
 
+        .contact-links span {
+            color: #475569;
+        }
+
+        /* Sections */
         section {
-            padding: 80px 40px;
+            padding: clamp(60px, 10vw, 100px) 20px;
         }
 
         section:nth-child(even) {
-            background: white;
+            background: var(--bg-alt);
         }
 
         h2 {
-            font-size: 2.5em;
-            margin-bottom: 15px;
-            color: #2c3e50;
-            font-weight: 700;
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            margin-bottom: 12px;
+            color: var(--secondary);
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
 
         .section-subtitle {
-            color: #7f8c8d;
-            font-size: 1.1em;
-            margin-bottom: 50px;
+            color: var(--text-light);
+            font-size: clamp(1rem, 2vw, 1.125rem);
+            margin-bottom: 48px;
         }
 
+        /* Skills Grid */
         .skills-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
             margin-top: 40px;
         }
 
         .skill-category {
             background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            border: 1px solid var(--border);
         }
 
         section:nth-child(even) .skill-category {
-            background: #f8f9fa;
+            background: white;
         }
 
         .skill-category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            border-color: var(--primary);
         }
 
         .skill-category h3 {
-            color: #3498db;
+            color: var(--primary);
             margin-bottom: 20px;
-            font-size: 1.3em;
+            font-size: 1.25rem;
+            font-weight: 700;
         }
 
         .skill-category ul {
@@ -189,134 +265,152 @@
         }
 
         .skill-category li {
-            padding: 8px 0;
-            color: #555;
-            border-bottom: 1px solid #ecf0f1;
+            padding: 10px 0;
+            color: var(--text);
+            border-bottom: 1px solid var(--border);
+            font-size: 0.95rem;
         }
 
         .skill-category li:last-child {
             border-bottom: none;
         }
 
+        /* Timeline */
         .timeline {
             position: relative;
-            padding-left: 50px;
-            margin-top: 40px;
+            padding-left: 40px;
+            margin-top: 48px;
         }
 
         .timeline::before {
             content: '';
             position: absolute;
             left: 0;
-            top: 0;
-            height: 100%;
-            width: 3px;
-            background: #3498db;
+            top: 8px;
+            height: calc(100% - 16px);
+            width: 2px;
+            background: var(--primary);
         }
 
         .timeline-item {
             position: relative;
-            margin-bottom: 50px;
-            padding-bottom: 30px;
+            margin-bottom: 48px;
+            padding-bottom: 24px;
         }
 
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -56px;
-            top: 0;
-            width: 15px;
-            height: 15px;
+            left: -46px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
-            background: #3498db;
-            border: 3px solid #f5f7fa;
+            background: var(--primary);
+            border: 3px solid var(--bg-alt);
+            box-shadow: 0 0 0 4px white;
         }
 
         section:nth-child(even) .timeline-item::before {
-            border-color: white;
+            box-shadow: 0 0 0 4px var(--bg-alt);
         }
 
         .timeline-item h3 {
-            font-size: 1.5em;
-            color: #2c3e50;
-            margin-bottom: 5px;
+            font-size: clamp(1.25rem, 3vw, 1.5rem);
+            color: var(--secondary);
+            margin-bottom: 8px;
+            font-weight: 700;
         }
 
         .timeline-item .role {
-            color: #3498db;
+            color: var(--primary);
             font-weight: 600;
-            font-size: 1.1em;
-            margin-bottom: 5px;
+            font-size: clamp(1rem, 2vw, 1.125rem);
+            margin-bottom: 6px;
         }
 
         .timeline-item .date {
-            color: #95a5a6;
-            margin-bottom: 15px;
-            font-size: 0.95em;
+            color: var(--text-light);
+            margin-bottom: 16px;
+            font-size: 0.9rem;
         }
 
         .timeline-item ul {
-            margin-top: 15px;
+            margin-top: 16px;
             margin-left: 20px;
         }
 
         .timeline-item li {
-            margin-bottom: 10px;
-            color: #555;
-            line-height: 1.8;
+            margin-bottom: 12px;
+            color: var(--text);
+            line-height: 1.7;
+            font-size: 0.95rem;
         }
 
+        /* Projects Grid */
         .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            gap: 28px;
+            margin-top: 48px;
         }
 
         .project-card {
             background: white;
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
         }
 
         section:nth-child(even) .project-card {
-            background: #f8f9fa;
+            background: white;
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+            border-color: var(--primary);
         }
 
         .project-card .project-header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(135deg, #0f172a 0%, #1e3c72 100%);
             color: white;
-            padding: 30px;
+            padding: 28px;
         }
 
         .project-card h3 {
-            font-size: 1.4em;
-            margin-bottom: 10px;
+            font-size: 1.375rem;
+            margin-bottom: 12px;
+            font-weight: 700;
         }
 
         .project-card .role-badge {
             display: inline-block;
-            background: rgba(255,255,255,0.2);
-            padding: 5px 15px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 6px 16px;
             border-radius: 20px;
-            font-size: 0.9em;
+            font-size: 0.85rem;
+            font-weight: 500;
         }
 
         .project-card .project-body {
-            padding: 25px;
+            padding: 28px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .project-card p {
-            color: #555;
-            line-height: 1.8;
+            color: var(--text);
+            line-height: 1.7;
             margin-bottom: 20px;
+            font-size: 0.95rem;
+            flex: 1;
         }
 
         .tech-tags {
@@ -326,145 +420,222 @@
         }
 
         .tech-tag {
-            background: #ecf0f1;
-            color: #2c3e50;
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-size: 0.85em;
-            font-weight: 500;
+            background: var(--bg-alt);
+            color: var(--primary);
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid var(--border);
         }
 
+        /* Education Grid */
         .education-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            gap: 28px;
+            margin-top: 48px;
         }
 
         .education-card {
             background: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            border-left: 4px solid #3498db;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--primary);
         }
 
         section:nth-child(even) .education-card {
-            background: #f8f9fa;
+            background: white;
+        }
+
+        .education-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
         }
 
         .education-card h3 {
-            color: #2c3e50;
-            font-size: 1.3em;
-            margin-bottom: 10px;
+            color: var(--secondary);
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            font-weight: 700;
         }
 
         .education-card .institution {
-            color: #7f8c8d;
-            margin-bottom: 10px;
+            color: var(--text);
+            margin-bottom: 12px;
+            line-height: 1.6;
         }
 
         .education-card .year {
-            color: #3498db;
-            font-weight: 600;
-            font-size: 1.1em;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.125rem;
         }
 
+        /* Footer */
         footer {
-            background: #2c3e50;
+            background: var(--secondary);
             color: white;
             text-align: center;
-            padding: 40px;
+            padding: 60px 20px 40px;
         }
 
-        footer .social-links {
+        footer h2 {
+            color: white;
+            margin-bottom: 32px;
+        }
+
+        .social-links {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-bottom: 20px;
+            gap: 16px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
         }
 
-        footer .social-links a {
+        .social-links a {
             color: white;
-            font-size: 1.5em;
-            transition: color 0.3s;
+            background: rgba(255,255,255,0.1);
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 1.25rem;
+            transition: all 0.3s;
+            text-decoration: none;
         }
 
-        footer .social-links a:hover {
-            color: #3498db;
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-4px);
         }
 
+        /* Responsive Design */
         @media (max-width: 768px) {
-            nav .container {
+            nav ul {
+                position: fixed;
+                top: 60px;
+                left: -100%;
+                width: 100%;
+                background: white;
                 flex-direction: column;
-                gap: 20px;
+                padding: 24px;
+                box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+                gap: 0;
+                transition: left 0.3s;
             }
 
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
+            nav ul.active {
+                left: 0;
+            }
+
+            nav ul li {
+                padding: 16px 0;
+                border-bottom: 1px solid var(--border);
+            }
+
+            nav ul li:last-child {
+                border-bottom: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
             }
 
             header {
-                padding: 60px 20px;
+                padding: 80px 20px 60px;
             }
 
-            header .container {
-                flex-direction: column;
-            }
-
-            header h1 {
-                font-size: 2em;
-            }
-
-            section {
-                padding: 50px 20px;
-            }
-
-            h2 {
-                font-size: 2em;
+            .skills-container,
+            .project-grid,
+            .education-grid {
+                grid-template-columns: 1fr;
             }
 
             .timeline {
-                padding-left: 30px;
+                padding-left: 32px;
             }
 
             .timeline-item::before {
-                left: -36px;
+                left: -38px;
             }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            .contact-links span {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .timeline {
+                padding-left: 24px;
+            }
+
+            .timeline-item::before {
+                left: -30px;
+            }
+
+            .skill-category,
+            .project-card .project-body,
+            .project-card .project-header,
+            .education-card {
+                padding: 24px;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* About Section Enhancement */
+        #about p:last-of-type {
+            font-size: clamp(1rem, 2vw, 1.0625rem);
+            line-height: 1.8;
+            color: var(--text);
+            max-width: 900px;
         }
     </style>
 </head>
 <body>
-    <nav>
+    <nav id="navbar">
         <div class="container">
             <div class="logo">SB</div>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#contact">Contact</a></li>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            <ul id="navMenu">
+                <li><a href="#about" onclick="closeMenu()">About</a></li>
+                <li><a href="#skills" onclick="closeMenu()">Skills</a></li>
+                <li><a href="#experience" onclick="closeMenu()">Experience</a></li>
+                <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
+                <li><a href="#education" onclick="closeMenu()">Education</a></li>
+                <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
             </ul>
         </div>
     </nav>
 
     <header>
         <div class="container">
-            <div class="header-content">
-                <h1>Sandip Bagul</h1>
-                <p class="title">Full Stack Developer</p>
-                <p class="subtitle">Specialized in building scalable web applications with Spring Boot and React.js. Passionate about creating efficient, maintainable solutions for complex business problems.</p>
-                <a href="#contact" class="btn-primary">Get In Touch</a>
-                <div class="contact-links">
-                    <a href="mailto:sandipbagul2312@gmail.com">sandipbagul2312@gmail.com</a>
-                    <span>|</span>
-                    <a href="tel:9392153017">+91 9392153017</a>
-                    <span>|</span>
-                    <span>Hyderabad, India</span>
-                </div>
+            <h1>Sandip Bagul</h1>
+            <p class="title">Full Stack Developer</p>
+            <p class="subtitle">Specialized in building scalable web applications with Spring Boot and React.js. Passionate about creating efficient, maintainable solutions for complex business problems.</p>
+            <a href="#contact" class="btn-primary">Get In Touch</a>
+            <div class="contact-links">
+                <a href="mailto:sandipbagul2312@gmail.com">sandipbagul2312@gmail.com</a>
+                <span>|</span>
+                <a href="tel:9392153017">+91 9392153017</a>
+                <span>|</span>
+                <span>Hyderabad, India</span>
             </div>
         </div>
     </header>
@@ -473,7 +644,7 @@
         <div class="container">
             <h2>About Me</h2>
             <p class="section-subtitle">Building scalable solutions for modern web applications</p>
-            <p style="font-size: 1.1em; line-height: 1.8; color: #555; max-width: 900px;">
+            <p>
                 Highly skilled Full Stack Developer with over 2 years of experience specializing in developing robust, scalable web applications using Spring Boot and React.js. Proven ability to design, implement, and maintain both backend services and frontend interfaces, ensuring seamless integration and high performance. Strong background in developing RESTful APIs, managing databases, and delivering interactive, user-friendly UI components. Currently working at C-DAC, leading the development of microservices architecture and mentoring junior developers.
             </p>
         </div>
@@ -666,15 +837,46 @@
 
     <footer id="contact">
         <div class="container">
-            <h2 style="color: white; margin-bottom: 30px;">Let's Connect</h2>
+            <h2>Let's Connect</h2>
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/sandipbagul/" target="_blank" title="LinkedIn">in</a>
-                <a href="mailto:sandipbagul2312@gmail.com" title="Email">✉</a>
-                <a href="tel:9392153017" title="Phone">☎</a>
+                <a href="https://www.linkedin.com/in/sandipbagul/" target="_blank" title="LinkedIn" aria-label="LinkedIn">in</a>
+                <a href="mailto:sandipbagul2312@gmail.com" title="Email" aria-label="Email">✉</a>
+                <a href="tel:9392153017" title="Phone" aria-label="Phone">☎</a>
             </div>
             <p style="margin-top: 20px; opacity: 0.8;">© 2025 Sandip Bagul. All rights reserved.</p>
             <p style="margin-top: 10px; opacity: 0.7;">Hyderabad, India</p>
         </div>
     </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+
+        function closeMenu() {
+            document.getElementById('navMenu').classList.remove('active');
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navMenu = document.getElementById('navMenu');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (!navMenu.contains(event.target) && !menuBtn.contains(event.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
