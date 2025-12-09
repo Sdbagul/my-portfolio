@@ -3,812 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sandip Bagul - Full Stack Developer</title>
+    <title>Sandip Bagul | Full Stack Developer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1e40af;
-            --secondary: #0f172a;
-            --text: #334155;
-            --text-light: #64748b;
-            --bg: #ffffff;
-            --bg-alt: #f8fafc;
-            --border: #e2e8f0;
-            --accent: #3b82f6;
+            --primary-color: #0d6efd;
+            --secondary-color: #6c757d;
+            --dark-bg: #212529;
+            --darker-bg: #1a1d20;
+            --card-bg: #2b3035;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            background: var(--bg);
-            overflow-x: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-bg);
+            color: #f8f9fa;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Navigation */
-        nav {
-            background: rgba(255, 255, 255, 0.95);
+        /* Navbar */
+        .navbar {
+            background-color: rgba(33, 37, 41, 0.95) !important;
             backdrop-filter: blur(10px);
-            padding: 16px 0;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        nav.scrolled {
-            padding: 12px 0;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
-        }
-
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        nav .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            letter-spacing: -0.5px;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 32px;
-        }
-
-        nav a {
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-            position: relative;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        nav a:hover {
-            color: var(--primary);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text);
         }
 
         /* Hero Section */
-        header {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
-            color: white;
-            padding: 120px 20px 100px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        header .container {
-            position: relative;
-            z-index: 1;
-        }
-
-        header h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            margin-bottom: 16px;
-            font-weight: 800;
-            letter-spacing: -1px;
-            background: linear-gradient(135deg, #fff 0%, #e2e8f0 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        header .title {
-            font-size: clamp(1.25rem, 3vw, 1.5rem);
-            margin-bottom: 20px;
-            color: #94a3b8;
-            font-weight: 400;
-        }
-
-        header .subtitle {
-            font-size: clamp(1rem, 2vw, 1.125rem);
-            margin-bottom: 32px;
-            color: #cbd5e1;
-            max-width: 650px;
-            line-height: 1.7;
-        }
-
-        .btn-primary {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 14px 32px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
-        }
-
-        .contact-links {
+        .hero-section {
+            height: 100vh;
             display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 24px;
-            font-size: 0.95rem;
+            align-items: center;
+            background: linear-gradient(135deg, var(--darker-bg) 0%, var(--card-bg) 100%);
+            border-bottom: 2px solid var(--primary-color);
         }
 
-        .contact-links a {
-            color: #94a3b8;
-            text-decoration: none;
-            transition: color 0.3s;
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
         }
 
-        .contact-links a:hover {
-            color: white;
-        }
-
-        .contact-links span {
-            color: #475569;
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #a0a0a0;
         }
 
         /* Sections */
         section {
-            padding: clamp(60px, 10vw, 100px) 20px;
+            padding: 80px 0;
         }
 
-        section:nth-child(even) {
-            background: var(--bg-alt);
-        }
-
-        h2 {
-            font-size: clamp(2rem, 4vw, 2.75rem);
-            margin-bottom: 12px;
-            color: var(--secondary);
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
-
-        .section-subtitle {
-            color: var(--text-light);
-            font-size: clamp(1rem, 2vw, 1.125rem);
-            margin-bottom: 48px;
-        }
-
-        /* Skills Grid */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            margin-top: 40px;
-        }
-
-        .skill-category {
-            background: white;
-            padding: 32px;
-            border-radius: 12px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            transition: all 0.3s;
-            border: 1px solid var(--border);
-        }
-
-        section:nth-child(even) .skill-category {
-            background: white;
-        }
-
-        .skill-category:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-            border-color: var(--primary);
-        }
-
-        .skill-category h3 {
-            color: var(--primary);
-            margin-bottom: 20px;
-            font-size: 1.25rem;
+        .section-title {
+            position: relative;
+            margin-bottom: 50px;
             font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        .skill-category ul {
-            list-style: none;
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
         }
 
-        .skill-category li {
-            padding: 10px 0;
-            color: var(--text);
-            border-bottom: 1px solid var(--border);
-            font-size: 0.95rem;
+        /* Cards */
+        .custom-card {
+            background-color: var(--card-bg);
+            border: none;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
         }
 
-        .skill-category li:last-child {
-            border-bottom: none;
+        .custom-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Skills Badges */
+        .skill-badge {
+            font-size: 0.9rem;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 25px;
+            background-color: rgba(13, 110, 253, 0.1);
+            border: 1px solid var(--primary-color);
+            color: #fff;
+            display: inline-block;
+        }
+
+        .skill-badge:hover {
+            background-color: var(--primary-color);
+            color: white;
+            cursor: default;
         }
 
         /* Timeline */
         .timeline {
-            position: relative;
-            padding-left: 40px;
-            margin-top: 48px;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 8px;
-            height: calc(100% - 16px);
-            width: 2px;
-            background: var(--primary);
+            border-left: 3px solid var(--primary-color);
+            padding-left: 30px;
+            margin-left: 10px;
         }
 
         .timeline-item {
             position: relative;
-            margin-bottom: 48px;
-            padding-bottom: 24px;
+            margin-bottom: 40px;
         }
 
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -46px;
-            top: 8px;
-            width: 12px;
-            height: 12px;
+            left: -38px;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            background-color: var(--primary-color);
             border-radius: 50%;
-            background: var(--primary);
-            border: 3px solid var(--bg-alt);
-            box-shadow: 0 0 0 4px white;
-        }
-
-        section:nth-child(even) .timeline-item::before {
-            box-shadow: 0 0 0 4px var(--bg-alt);
-        }
-
-        .timeline-item h3 {
-            font-size: clamp(1.25rem, 3vw, 1.5rem);
-            color: var(--secondary);
-            margin-bottom: 8px;
-            font-weight: 700;
-        }
-
-        .timeline-item .role {
-            color: var(--primary);
-            font-weight: 600;
-            font-size: clamp(1rem, 2vw, 1.125rem);
-            margin-bottom: 6px;
-        }
-
-        .timeline-item .date {
-            color: var(--text-light);
-            margin-bottom: 16px;
-            font-size: 0.9rem;
-        }
-
-        .timeline-item ul {
-            margin-top: 16px;
-            margin-left: 20px;
-        }
-
-        .timeline-item li {
-            margin-bottom: 12px;
-            color: var(--text);
-            line-height: 1.7;
-            font-size: 0.95rem;
-        }
-
-        /* Projects Grid */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 28px;
-            margin-top: 48px;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            transition: all 0.3s;
-            border: 1px solid var(--border);
-            display: flex;
-            flex-direction: column;
-        }
-
-        section:nth-child(even) .project-card {
-            background: white;
-        }
-
-        .project-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 32px rgba(0,0,0,0.1);
-            border-color: var(--primary);
-        }
-
-        .project-card .project-header {
-            background: linear-gradient(135deg, #0f172a 0%, #1e3c72 100%);
-            color: white;
-            padding: 28px;
-        }
-
-        .project-card h3 {
-            font-size: 1.375rem;
-            margin-bottom: 12px;
-            font-weight: 700;
-        }
-
-        .project-card .role-badge {
-            display: inline-block;
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(10px);
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .project-card .project-body {
-            padding: 28px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-card p {
-            color: var(--text);
-            line-height: 1.7;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-            flex: 1;
-        }
-
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .tech-tag {
-            background: var(--bg-alt);
-            color: var(--primary);
-            padding: 6px 14px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            border: 1px solid var(--border);
-        }
-
-        /* Education Grid */
-        .education-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 28px;
-            margin-top: 48px;
-        }
-
-        .education-card {
-            background: white;
-            padding: 32px;
-            border-radius: 12px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            border-left: 4px solid var(--primary);
-            transition: all 0.3s;
-            border: 1px solid var(--border);
-            border-left: 4px solid var(--primary);
-        }
-
-        section:nth-child(even) .education-card {
-            background: white;
-        }
-
-        .education-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-        }
-
-        .education-card h3 {
-            color: var(--secondary);
-            font-size: 1.25rem;
-            margin-bottom: 12px;
-            font-weight: 700;
-        }
-
-        .education-card .institution {
-            color: var(--text);
-            margin-bottom: 12px;
-            line-height: 1.6;
-        }
-
-        .education-card .year {
-            color: var(--primary);
-            font-weight: 700;
-            font-size: 1.125rem;
+            border: 2px solid white;
         }
 
         /* Footer */
         footer {
-            background: var(--secondary);
-            color: white;
+            background-color: var(--darker-bg);
+            padding: 30px 0;
             text-align: center;
-            padding: 60px 20px 40px;
+            border-top: 1px solid #333;
         }
-
-        footer h2 {
-            color: white;
-            margin-bottom: 32px;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            margin-bottom: 24px;
-            flex-wrap: wrap;
-        }
-
-        .social-links a {
-            color: white;
-            background: rgba(255,255,255,0.1);
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px;
-            font-size: 1.25rem;
-            transition: all 0.3s;
+        
+        /* Contact Link Styling */
+        .contact-link {
+            color: #fff;
             text-decoration: none;
+            transition: color 0.3s;
         }
-
-        .social-links a:hover {
-            background: var(--primary);
-            transform: translateY(-4px);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            nav ul {
-                position: fixed;
-                top: 60px;
-                left: -100%;
-                width: 100%;
-                background: white;
-                flex-direction: column;
-                padding: 24px;
-                box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-                gap: 0;
-                transition: left 0.3s;
-            }
-
-            nav ul.active {
-                left: 0;
-            }
-
-            nav ul li {
-                padding: 16px 0;
-                border-bottom: 1px solid var(--border);
-            }
-
-            nav ul li:last-child {
-                border-bottom: none;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            header {
-                padding: 80px 20px 60px;
-            }
-
-            .skills-container,
-            .project-grid,
-            .education-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .timeline {
-                padding-left: 32px;
-            }
-
-            .timeline-item::before {
-                left: -38px;
-            }
-
-            .contact-links {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 8px;
-            }
-
-            .contact-links span {
-                display: none;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .timeline {
-                padding-left: 24px;
-            }
-
-            .timeline-item::before {
-                left: -30px;
-            }
-
-            .skill-category,
-            .project-card .project-body,
-            .project-card .project-header,
-            .education-card {
-                padding: 24px;
-            }
-        }
-
-        /* Smooth Scroll */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* About Section Enhancement */
-        #about p:last-of-type {
-            font-size: clamp(1rem, 2vw, 1.0625rem);
-            line-height: 1.8;
-            color: var(--text);
-            max-width: 900px;
+        .contact-link:hover {
+            color: var(--primary-color);
         }
     </style>
 </head>
 <body>
-    <nav id="navbar">
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow">
         <div class="container">
-            <div class="logo">SB</div>
-            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
-            <ul id="navMenu">
-                <li><a href="#about" onclick="closeMenu()">About</a></li>
-                <li><a href="#skills" onclick="closeMenu()">Skills</a></li>
-                <li><a href="#experience" onclick="closeMenu()">Experience</a></li>
-                <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
-                <li><a href="#education" onclick="closeMenu()">Education</a></li>
-                <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
-            </ul>
+            <a class="navbar-brand fw-bold" href="#">SB</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <header>
+    <header class="hero-section text-center text-lg-start">
         <div class="container">
-            <h1>Sandip Bagul</h1>
-            <p class="title">Full Stack Developer</p>
-            <p class="subtitle">Specialized in building scalable web applications with Spring Boot and React.js. Passionate about creating efficient, maintainable solutions for complex business problems.</p>
-            <a href="#contact" class="btn-primary">Get In Touch</a>
-            <div class="contact-links">
-                <a href="mailto:sandipbagul2312@gmail.com">sandipbagul2312@gmail.com</a>
-                <span>|</span>
-                <a href="tel:9392153017">+91 9392153017</a>
-                <span>|</span>
-                <span>Hyderabad, India</span>
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h5 class="text-primary mb-3">Hello, I am</h5>
+                    <h1 class="hero-title mb-3">Sandip Bagul</h1>
+                    <h3 class="hero-subtitle mb-4">Full Stack Developer | Java & Spring Boot Specialist</h3>
+                    <p class="lead mb-4 text-white-50">
+                        Highly skilled developer with 3+ years of experience specializing in developing robust, 
+                        scalable web applications using Spring Boot and React.js.
+                    </p>
+                    <a href="#contact" class="btn btn-primary btn-lg me-3">Contact Me</a>
+                    <a href="#projects" class="btn btn-outline-light btn-lg">View Projects</a>
+                </div>
+                <div class="col-lg-4 d-none d-lg-block text-center">
+                    <i class="fas fa-code fa-10x text-white-50"></i>
+                </div>
             </div>
         </div>
     </header>
 
-    <section id="about">
-        <div class="container">
-            <h2>About Me</h2>
-            <p class="section-subtitle">Building scalable solutions for modern web applications</p>
-            <p>
-                Highly skilled Full Stack Developer with over 2 years of experience specializing in developing robust, scalable web applications using Spring Boot and React.js. Proven ability to design, implement, and maintain both backend services and frontend interfaces, ensuring seamless integration and high performance. Strong background in developing RESTful APIs, managing databases, and delivering interactive, user-friendly UI components. Currently working at C-DAC, leading the development of microservices architecture and mentoring junior developers.
-            </p>
-        </div>
-    </section>
-
-    <section id="skills">
-        <div class="container">
-            <h2>Technical Skills</h2>
-            <p class="section-subtitle">Expertise across the full technology stack</p>
-            <div class="skills-container">
-                <div class="skill-category">
-                    <h3>Backend Development</h3>
-                    <ul>
-                        <li>Java (Advanced)</li>
-                        <li>Spring Boot</li>
-                        <li>Spring MVC</li>
-                        <li>Microservices Architecture</li>
-                        <li>RESTful API Design</li>
-                        <li>Apache Kafka</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Frontend Development</h3>
-                    <ul>
-                        <li>ReactJS</li>
-                        <li>HTML5</li>
-                        <li>CSS3</li>
-                        <li>JavaScript</li>
-                        <li>Responsive Design</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Databases & Storage</h3>
-                    <ul>
-                        <li>MySQL</li>
-                        <li>MongoDB</li>
-                        <li>Elastic Search</li>
-                        <li>Redis</li>
-                        <li>Database Optimization</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>DevOps & Tools</h3>
-                    <ul>
-                        <li>Docker</li>
-                        <li>Git & GitHub</li>
-                        <li>CI/CD Pipelines</li>
-                        <li>Eclipse & STS</li>
-                        <li>VS Code</li>
-                        <li>Postman</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="experience">
-        <div class="container">
-            <h2>Professional Experience</h2>
-            <p class="section-subtitle">2+ years of building enterprise-grade applications</p>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <h3>Centre for Development of Advanced Computing (C-DAC)</h3>
-                    <div class="role">Project Engineer</div>
-                    <div class="date">December 2024 - Present | Hyderabad, Telangana</div>
-                    <ul>
-                        <li>Leading the development of scalable microservices using Spring Boot, with a focus on high-performance and maintainable code</li>
-                        <li>Designed and optimized RESTful APIs to support seamless communication across multiple channels including voice, SMS, WhatsApp, and push notifications</li>
-                        <li>Enhanced system reliability and scalability by integrating Apache Kafka for real-time data streaming and asynchronous processing</li>
-                        <li>Mentored junior developers and actively contributed to code reviews, architectural discussions, and deployment planning</li>
-                        <li>Collaborated closely with DevOps teams to containerize services using Docker and streamline CI/CD pipelines</li>
-                    </ul>
-                </div>
-
-                <div class="timeline-item">
-                    <h3>Centre for Development of Advanced Computing (C-DAC)</h3>
-                    <div class="role">Project Associate</div>
-                    <div class="date">September 2022 - December 2024 | Hyderabad, Telangana</div>
-                    <ul>
-                        <li>Developed and maintained microservices-based applications using Spring Boot</li>
-                        <li>Implemented features and enhancements using Java, J2SE, and J2EE technologies</li>
-                        <li>Collaborated with cross-functional teams to design and integrate APIs for communication channels including voice, SMS, WhatsApp, and app notifications</li>
-                        <li>Worked on Apache Kafka for event-driven data processing and messaging</li>
-                    </ul>
-                </div>
-
-                <div class="timeline-item">
-                    <h3>Nectawise Market Research</h3>
-                    <div class="role">Web Developer Intern</div>
-                    <div class="date">November 2021 - February 2022 | Pune</div>
-                    <ul>
-                        <li>Contributed to the development of an employee management portal using Spring MVC</li>
-                        <li>Designed and implemented backend functionalities</li>
-                        <li>Collaborated with frontend developers for seamless integration</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects">
-        <div class="container">
-            <h2>Featured Projects</h2>
-            <p class="section-subtitle">Real-world applications delivering business value</p>
-            <div class="project-grid">
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Notify</h3>
-                        <span class="role-badge">Lead Developer</span>
-                    </div>
-                    <div class="project-body">
-                        <p>Developed a comprehensive communication channel integration platform enabling seamless multi-channel messaging across voice, SMS, WhatsApp, and app notifications.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Spring Boot</span>
-                            <span class="tech-tag">Microservices</span>
-                            <span class="tech-tag">Java</span>
-                            <span class="tech-tag">Apache Kafka</span>
+    <section id="about" class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="custom-card p-4">
+                    <p class="fs-5">
+                        I am a Full Stack Developer based in <strong>Hyderabad, India</strong>. I have a proven ability to design, implement, and maintain both backend services and frontend interfaces, ensuring seamless integration and high performance.
+                    </p>
+                    <p class="text-white-50">
+                        My strong background includes developing RESTful APIs, managing databases, and delivering interactive, user-friendly UI components. I am currently leading development efforts at C-DAC, focusing on microservices and real-time data streaming.
+                    </p>
+                    <div class="row mt-4">
+                        <div class="col-md-4">
+                            <i class="fas fa-language text-primary me-2"></i> <strong>English:</strong> Professional
                         </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Vikaspedia Backend</h3>
-                        <span class="role-badge">Backend Developer</span>
-                    </div>
-                    <div class="project-body">
-                        <p>Architected and developed comprehensive microservices ecosystem using Java Spring Boot, enhancing system scalability and modular enterprise application design.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Spring Boot</span>
-                            <span class="tech-tag">MySQL</span>
-                            <span class="tech-tag">MongoDB</span>
-                            <span class="tech-tag">Elastic Search</span>
-                            <span class="tech-tag">Redis</span>
-                            <span class="tech-tag">Kafka</span>
+                        <div class="col-md-4">
+                            <i class="fas fa-language text-primary me-2"></i> <strong>Hindi:</strong> Full Professional
                         </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Hostel Automation System</h3>
-                        <span class="role-badge">Backend Developer</span>
-                    </div>
-                    <div class="project-body">
-                        <p>Automated hostel management tasks using face recognition and voice interface, including student attendance tracking and parent notifications.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Spring Boot</span>
-                            <span class="tech-tag">Face Recognition</span>
-                            <span class="tech-tag">Java</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-header">
-                        <h3>Employee Management Portal</h3>
-                        <span class="role-badge">Backend Developer</span>
-                    </div>
-                    <div class="project-body">
-                        <p>Contributed to the development of a comprehensive employee management portal with full CRUD operations and role-based access control.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Spring MVC</span>
-                            <span class="tech-tag">Java</span>
+                        <div class="col-md-4">
+                            <i class="fas fa-language text-primary me-2"></i> <strong>Marathi:</strong> Native
                         </div>
                     </div>
                 </div>
@@ -816,67 +212,240 @@
         </div>
     </section>
 
-    <section id="education">
+    <section id="skills" style="background-color: var(--darker-bg);">
         <div class="container">
-            <h2>Education</h2>
-            <p class="section-subtitle">Academic foundation in computer science</p>
-            <div class="education-grid">
-                <div class="education-card">
-                    <h3>Bachelor of Engineering</h3>
-                    <p class="institution">Information Technology<br>Savitribai Phule Pune University</p>
-                    <p class="year">2022</p>
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="custom-card p-4 h-100">
+                        <h4 class="mb-3"><i class="fas fa-server text-primary me-2"></i> Backend & Database</h4>
+                        <div>
+                            <span class="skill-badge">Java (Basic & Advanced)</span>
+                            <span class="skill-badge">Spring Boot</span>
+                            <span class="skill-badge">Spring MVC</span>
+                            <span class="skill-badge">Microservices</span>
+                            <span class="skill-badge">Apache Kafka</span>
+                            <span class="skill-badge">MySQL</span>
+                            <span class="skill-badge">MongoDB</span>
+                            <span class="skill-badge">Elastic Search</span>
+                            <span class="skill-badge">RESTful APIs</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="education-card">
-                    <h3>Diploma</h3>
-                    <p class="institution">Computer Engineering<br>Maharashtra State Board of Technical Education</p>
-                    <p class="year">2019</p>
+                <div class="col-md-6 mb-4">
+                    <div class="custom-card p-4 h-100">
+                        <h4 class="mb-3"><i class="fas fa-laptop-code text-primary me-2"></i> Frontend & Tools</h4>
+                        <div>
+                            <span class="skill-badge">ReactJS</span>
+                            <span class="skill-badge">HTML5</span>
+                            <span class="skill-badge">CSS3</span>
+                            <span class="skill-badge">Docker</span>
+                            <span class="skill-badge">Git</span>
+                            <span class="skill-badge">Postman</span>
+                            <span class="skill-badge">VS Code</span>
+                            <span class="skill-badge">Eclipse/STS</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer id="contact">
-        <div class="container">
-            <h2>Let's Connect</h2>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/sandipbagul/" target="_blank" title="LinkedIn" aria-label="LinkedIn">in</a>
-                <a href="mailto:sandipbagul2312@gmail.com" title="Email" aria-label="Email">✉</a>
-                <a href="tel:9392153017" title="Phone" aria-label="Phone">☎</a>
+    <section id="experience" class="container">
+        <h2 class="section-title">Work Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h4 class="mb-1">Project Engineer</h4>
+                <p class="text-primary mb-2">Centre for Development of Advanced Computing (C-DAC) | Hyderabad</p>
+                <p class="text-muted small"><i class="far fa-calendar-alt me-1"></i> Feb 2025 - Present</p>
+                <div class="text-white-50">
+                    <ul>
+                        <li>Leading the development of scalable microservices using Spring Boot.</li>
+                        <li>Designed and optimized RESTful APIs for voice, SMS, WhatsApp, and push notifications.</li>
+                        <li>Enhanced system reliability using Apache Kafka for real-time data streaming.</li>
+                        <li>Collaborated with DevOps to containerize services using Docker.</li>
+                        <li>Mentored junior developers and led architectural discussions.</li>
+                    </ul>
+                </div>
             </div>
-            <p style="margin-top: 20px; opacity: 0.8;">© 2025 Sandip Bagul. All rights reserved.</p>
-            <p style="margin-top: 10px; opacity: 0.7;">Hyderabad, India</p>
+
+            <div class="timeline-item">
+                <h4 class="mb-1">Project Associate</h4>
+                <p class="text-primary mb-2">Centre for Development of Advanced Computing (C-DAC) | Hyderabad</p>
+                <p class="text-muted small"><i class="far fa-calendar-alt me-1"></i> Sept 2022 - Feb 2025</p>
+                <div class="text-white-50">
+                    <ul>
+                        <li>Developed and maintained microservices-based applications using Spring Boot and Java/J2EE.</li>
+                        <li>Integrated APIs for communication channels (Voice, SMS, WhatsApp).</li>
+                        <li>Worked on Apache Kafka for event-driven data processing.</li>
+                        <li>Collaborated with cross-functional teams for seamless API integration.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <h4 class="mb-1">Web Developer Intern</h4>
+                <p class="text-primary mb-2">Nectawise Market Research | Pune</p>
+                <p class="text-muted small"><i class="far fa-calendar-alt me-1"></i> Nov 2021 - Feb 2022</p>
+                <div class="text-white-50">
+                    <ul>
+                        <li>Contributed to the development of an employee management portal using Spring MVC.</li>
+                        <li>Designed back-end functionalities and collaborated with front-end developers.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" style="background-color: var(--darker-bg);">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="row g-4">
+                
+                <div class="col-md-6">
+                    <div class="custom-card p-4">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <h3 class="h4">Notify</h3>
+                            <i class="fas fa-comment-dots fa-2x text-primary"></i>
+                        </div>
+                        <p class="text-white-50">
+                            Developed a communication channel integration platform focusing on Voice, SMS, WhatsApp, and App notification APIs.
+                        </p>
+                        <p><strong>Role:</strong> Lead Developer</p>
+                        <div class="mt-3">
+                            <span class="badge bg-secondary">Spring Boot</span>
+                            <span class="badge bg-secondary">Microservices</span>
+                            <span class="badge bg-secondary">Kafka</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="custom-card p-4">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <h3 class="h4">Vikaspedia Backend</h3>
+                            <i class="fas fa-network-wired fa-2x text-primary"></i>
+                        </div>
+                        <p class="text-white-50">
+                            Architected a comprehensive microservices ecosystem enhancing system scalability and modular enterprise design.
+                        </p>
+                        <p><strong>Role:</strong> Back-End Developer</p>
+                        <div class="mt-3">
+                            <span class="badge bg-secondary">Java</span>
+                            <span class="badge bg-secondary">MongoDB</span>
+                            <span class="badge bg-secondary">Elastic Search</span>
+                            <span class="badge bg-secondary">Redis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="custom-card p-4">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <h3 class="h4">Hostel Automation</h3>
+                            <i class="fas fa-user-check fa-2x text-primary"></i>
+                        </div>
+                        <p class="text-white-50">
+                            Automated hostel management tasks including student attendance tracking via Face Recognition and parent notifications.
+                        </p>
+                        <p><strong>Role:</strong> Back-End Developer</p>
+                        <div class="mt-3">
+                            <span class="badge bg-secondary">Spring Boot</span>
+                            <span class="badge bg-secondary">Face Recognition</span>
+                            <span class="badge bg-secondary">Java</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="custom-card p-4">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <h3 class="h4">Employee Portal</h3>
+                            <i class="fas fa-users-cog fa-2x text-primary"></i>
+                        </div>
+                        <p class="text-white-50">
+                            Contributed to the development of a full-featured employee management portal.
+                        </p>
+                        <p><strong>Role:</strong> Back-End Developer</p>
+                        <div class="mt-3">
+                            <span class="badge bg-secondary">Spring MVC</span>
+                            <span class="badge bg-secondary">Java</span>
+                            <span class="badge bg-secondary">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="container">
+        <h2 class="section-title">Education</h2>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <div class="custom-card p-4 border-start border-4 border-primary">
+                    <h4>BE Information Technology</h4>
+                    <p class="lead mb-0">Savitribai Phule Pune University</p>
+                    <p class="text-muted">Graduated 2022</p>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="custom-card p-4 border-start border-4 border-primary">
+                    <h4>Diploma (CE)</h4>
+                    <p class="lead mb-0">Maharashtra State Board of Technical Education</p>
+                    <p class="text-muted">Graduated 2019</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" style="background-color: var(--darker-bg);">
+        <div class="container text-center">
+            <h2 class="section-title text-center mx-auto">Get In Touch</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <p class="lead mb-5">
+                        I am currently open to new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+                    </p>
+                    
+                    <div class="row g-4 justify-content-center">
+                        <div class="col-md-4">
+                            <div class="custom-card p-3">
+                                <i class="fas fa-envelope fa-2x text-primary mb-3"></i>
+                                <h5 class="mb-2">Email</h5>
+                                <a href="mailto:sandipbagul2312@gmail.com" class="contact-link">sandipbagul2312@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="custom-card p-3">
+                                <i class="fas fa-phone fa-2x text-primary mb-3"></i>
+                                <h5 class="mb-2">Phone</h5>
+                                <a href="tel:9392153017" class="contact-link">9392153017</a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="custom-card p-3">
+                                <i class="fab fa-linkedin fa-2x text-primary mb-3"></i>
+                                <h5 class="mb-2">LinkedIn</h5>
+                                <a href="https://www.linkedin.com/in/sandipbagul/" target="_blank" class="contact-link">View Profile</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-5">
+                        <!-- <button class="btn btn-primary"><i class="fas fa-download me-2"></i>Download Resume</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p class="mb-0">© 2025 Sandip Bagul. All rights reserved.</p>
         </div>
     </footer>
 
-    <script>
-        // Mobile menu toggle
-        function toggleMenu() {
-            document.getElementById('navMenu').classList.toggle('active');
-        }
-
-        function closeMenu() {
-            document.getElementById('navMenu').classList.remove('active');
-        }
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const navMenu = document.getElementById('navMenu');
-            const menuBtn = document.querySelector('.mobile-menu-btn');
-            
-            if (!navMenu.contains(event.target) && !menuBtn.contains(event.target)) {
-                navMenu.classList.remove('active');
-            }
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
